@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../'))
+COMMON_DIR = os.path.join(PROJECT_ROOT, 'common')
 
 # sys.path.insert(
 #     0, os.path.join(BASE_DIR, 'apps')
@@ -90,3 +91,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# SMYT-specific
+
+MODEL_SPEC_DIR = os.path.join(COMMON_DIR, 'model_specs')
+MODEL_SPEC_FILE = os.path.join(MODEL_SPEC_DIR, 'spec.yaml')
