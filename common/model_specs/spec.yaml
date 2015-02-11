@@ -3,7 +3,7 @@ users:
     fields:
         - {id: name, title: Имя, type: char}
         - {id: paycheck, title: Зарплата, type: int}
-     - {id: date_joined, title: Дата поступления на работу, type: date}
+        - {id: date_joined, title: Дата поступления на работу, type: date}
 
 
 rooms:
