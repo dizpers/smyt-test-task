@@ -47,7 +47,18 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'south',
     'gunicorn',
-    'smyt.core'
+    'smyt.core',
+    'djangobower',
+    'backbone'
+)
+
+BOWER_INSTALLED_APPS = (
+    'jquery',
+    'underscore',
+    'backbone',
+    'backgrid',
+    'pickaday',
+    'momentjs'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -68,8 +79,15 @@ WSGI_APPLICATION = 'smyt.wsgi.application'
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'smyt',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '',
+        'PORT': 3306,
+        'TEST_NAME': 'smyt_test',
+        'TEST_CHARSET': 'utf8',
+        'TEST_COLLATION': 'utf8_general_ci'
     }
 }
 
@@ -91,6 +109,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'djangobower.finders.BowerFinder',
+)
 
 # SMYT-specific
 

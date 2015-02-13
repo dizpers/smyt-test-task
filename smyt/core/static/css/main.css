@@ -1,0 +1,13 @@
+#models{
+    width: 20%;
+    float: left;
+}
+
+#control{
+    width: 80%;
+    float: left;
+}
+
+#control .create{
+    display: none;
+}

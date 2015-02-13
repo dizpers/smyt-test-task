@@ -58,3 +58,9 @@ spool/*/**
 
 # IDE and others (plz add yours here)
 .idea/
+
+# Bower
+bower_components
+.bower-cache
+.bower-registry
+.bower-tmp
