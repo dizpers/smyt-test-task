@@ -26,45 +26,54 @@ $(document).ready(function(){
 
     Backgrid.NumberFormatter.prototype._toRaw = Backgrid.NumberFormatter.prototype.toRaw;
     Backgrid.NumberFormatter.prototype.toRaw = function(formattedData, model){
-        if (this.options.required && formattedData==='')
-            return undefined;
-        return Backgrid.NumberFormatter.prototype._toRaw(formattedData, model);
+        if (this.options.required && formattedData==='') return;
+        return Backgrid.NumberFormatter.prototype._toRaw.apply(this, arguments);
     };
 
     Backgrid.StringFormatter.prototype._toRaw = Backgrid.StringFormatter.prototype.toRaw;
     Backgrid.StringFormatter.prototype.toRaw = function(formattedData, model){
-        if (this.options.required && formattedData==='')
-            return undefined;
-        if (this.options.max_length && formattedData.length > this.options.max_length)
-            return undefined;
-        return Backgrid.StringFormatter.prototype._toRaw(formattedData, model);
+        if (this.options.required && formattedData==='') return;
+        if (this.options.max_length && formattedData.length > this.options.max_length) return;
+        return Backgrid.StringFormatter.prototype._toRaw.apply(this, arguments);
     };
 
     Backgrid.DatetimeFormatter.prototype._toRaw = Backgrid.DatetimeFormatter.prototype.toRaw;
     Backgrid.DatetimeFormatter.prototype.toRaw = function(formattedData, model){
-        if (this.options.required && formattedData==='')
-            return undefined;
-        return Backgrid.DatetimeFormatter.prototype._toRaw(formattedData, model);
+        if (this.options.required && formattedData==='') return;
+        return Backgrid.DatetimeFormatter.prototype._toRaw.apply(this, arguments);
     };
 
     var DatePickerCellEditor = Backgrid.DatePickerCellEditor = Backgrid.InputCellEditor.extend({
-        events: {},
-        initialize: function(){
-            Backgrid.InputCellEditor.prototype.initialize.apply(this, arguments);
-            var input = this;
-            $(this.el).pikaday({
-                //onClose: function () {
-                //    var command = new Backgrid.Command({});
-                //    input.model.set(input.column.get("name"), this.getMoment().format('YYYY-MM-DD'));
-                //    input.model.trigger("backgrid:edited", input.model, input.column, command);
-                //    command = input = null;
-                //}
-            });
+        postRender: function(model, column){
+            DatePickerCellEditor.__super__.postRender.apply(this, arguments);
+            this.$el.pikaday({
+                onClose: function () {
+                    var command = new Backgrid.Command({});
+                    model.set(column.get("name"), this.getMoment().format('YYYY-MM-DD'));
+                    model.trigger("backgrid:edited", model, column, command);
+                }
+            }).pikaday('show');
+            return this;
         }
     });
 
     Backgrid.DateCell = Backgrid.DateCell.extend({
-        editor: DatePickerCellEditor
+        editor: DatePickerCellEditor,
+        exitEditMode: function () {
+            this.$el.removeClass("error");
+            if (this.currentEditor) {
+                this.currentEditor.remove();
+                this.stopListening(this.currentEditor);
+                delete this.currentEditor;
+            }
+            this.$el.removeClass("editor");
+            this.render();
+        },
+        enterEditMode: function(e){
+            Backgrid.DateCell.__super__.enterEditMode.apply(this, arguments);
+
+            e.stopPropagation();
+        }
     });
 
     var Model = Backbone.Model.extend({
