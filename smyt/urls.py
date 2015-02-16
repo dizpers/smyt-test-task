@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
+
 from smyt.core.views import IndexView, model_info, model_objects
 
 admin.autodiscover()

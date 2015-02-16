@@ -1,11 +1,10 @@
-import os
 import sys
 import json
 
 import yaml
 
-from django.db import models
 from django.conf import settings
+from django.db import models
 
 
 field_mapping_dct = {

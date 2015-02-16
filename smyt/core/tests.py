@@ -3,8 +3,8 @@
 from functools import partial
 
 import json
-from django.core.serializers.json import DjangoJSONEncoder
 
+from django.core.serializers.json import DjangoJSONEncoder
 from django.core.urlresolvers import reverse
 
 from django.db import models

@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from django.db.models import get_models
 
 from smyt.core import models

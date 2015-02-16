@@ -1,11 +1,15 @@
 import json
-from django.http import HttpResponse
-from django.core.serializers.json import DjangoJSONEncoder
-from django.views.decorators.csrf import csrf_exempt
 
-from django.views.generic import TemplateView
+from django.core.serializers.json import DjangoJSONEncoder
+
 from django.db import models
 from django.db.models import get_models
+
+from django.http import HttpResponse
+
+from django.views.decorators.csrf import csrf_exempt
+from django.views.generic import TemplateView
+
 from smyt.core import models as core_models
 
 
