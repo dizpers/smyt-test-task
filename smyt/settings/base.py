@@ -29,7 +29,7 @@ COMMON_DIR = os.path.join(PROJECT_ROOT, 'common')
 SECRET_KEY = 'g&0nbjwdz&qey+=x%_4mod%684x8=-7=afb1-dix$$8^+*ebd0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
