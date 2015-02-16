@@ -46,10 +46,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'south',
-    'gunicorn',
     'smyt.core',
     'djangobower',
-    'backbone'
 )
 
 BOWER_INSTALLED_APPS = (
