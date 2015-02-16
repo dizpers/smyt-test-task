@@ -10,6 +10,7 @@ Deploy
 Для запуска web-приложения необходима ОС семейства Linux с установленными:
 
 * MySQL
+* libmysqlclient-dev
 * python 2.7.x
 * git
 * python-dev
@@ -53,12 +54,12 @@ Deploy
 
     source .env/bin/activate
 
-Устанавливаем необходимые пакеты Python:
+Устанавливаем необходимые пакеты Python (в указанном порядке):
 
 ::
 
-    pip install -U -r requirements.txt
     pip install -U -r requirements-dev.txt
+    pip install -U -r requirements.txt
 
 Настройка базы данных
 ^^^^^^^^^^^^^^^^^^^^^

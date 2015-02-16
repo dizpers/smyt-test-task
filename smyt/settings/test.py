@@ -1,4 +1,4 @@
-from .base import *
+from .local import *
 
 INSTALLED_APPS += (
     'django_nose',
