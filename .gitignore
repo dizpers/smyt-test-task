@@ -44,7 +44,7 @@ coverage.xml
 *.mo
 *.pot
 
-# Django stuff:
+# Django stuff
 *.log
 local.py
 db.sqlite3
@@ -64,3 +64,6 @@ bower_components
 .bower-cache
 .bower-registry
 .bower-tmp
+
+# Tests
+.noseids
