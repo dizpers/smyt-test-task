@@ -60,7 +60,7 @@ def model_objects(request, model, object_id=None):
                 obj_data.pop('id')
                 model_cls.objects.filter(id=object_id).update(**obj_data)
             else:
-                obj, _ = model_cls.objects.get_or_create(**obj_data)
+                obj = model_cls.objects.create(**obj_data)
                 obj = {field_name: getattr(obj, field_name) for field_name in field_name_lst}
                 response_kwargs.update(obj_state_response_kwargs(obj))
         else:
