@@ -51,12 +51,12 @@ INSTALLED_APPS = (
 )
 
 BOWER_INSTALLED_APPS = (
-    'jquery',
-    'underscore',
     'backbone',
     'backgrid',
-    'pickaday',
-    'momentjs'
+    'pikaday',
+    'momentjs',
+    'jquery',
+    'underscore'
 )
 
 MIDDLEWARE_CLASSES = (

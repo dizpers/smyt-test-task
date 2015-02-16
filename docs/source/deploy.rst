@@ -110,7 +110,7 @@ Deploy
 
 ::
 
-    python manage.py bower install
+    python manage.py bower_install -F
     python manage.py collectstatic
 
 Создаём суперпользователя:
