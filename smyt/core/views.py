@@ -41,16 +41,22 @@ def model_info(request, model):
 @csrf_exempt
 def model_objects(request, model, object_id=None):
     model_cls = getattr(core_models, model)
+    field_name_lst = model_cls._meta.get_all_field_names()
+    response_kwargs = {}
+    obj_state_response_kwargs = lambda o: {
+        'content': json.dumps(o, cls=DjangoJSONEncoder),
+        'content_type': 'application/json'
+    }
     if request.method == 'POST':
         obj_data = json.loads(request.body)
         if object_id:
             obj_data.pop('id')
             model_cls.objects.filter(id=object_id).update(**obj_data)
         else:
-            model_cls.objects.create(**obj_data)
-        return HttpResponse()
+            obj, _ = model_cls.objects.get_or_create(**obj_data)
+            obj = {field_name: getattr(obj, field_name) for field_name in field_name_lst}
+            response_kwargs.update(obj_state_response_kwargs(obj))
     else:
-        field_name_lst = model_cls._meta.get_all_field_names()
         obj_lst = model_cls.objects.all()
         obj_lst = map(
             lambda obj: {
@@ -58,4 +64,5 @@ def model_objects(request, model, object_id=None):
             },
             obj_lst
         )
-        return HttpResponse(json.dumps(obj_lst, cls=DjangoJSONEncoder), content_type='application/json')
+        response_kwargs.update(obj_state_response_kwargs(obj_lst))
+    return HttpResponse(**response_kwargs)

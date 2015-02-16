@@ -86,7 +86,9 @@ $(document).ready(function(){
                         window.required_attributes,
                         _.intersection(model_attributes, window.required_attributes)
                     ).length > 0) return;
-                model.save();
+                model.save(null, {
+                    silent: true
+                });
             });
         }
     });
