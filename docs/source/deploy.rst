@@ -143,3 +143,28 @@ Deploy
 Конфиг Nginx
 ------------
 
+::
+
+    upstream smyt_app_server {
+        server 127.0.0.1:8000 fail_timeout=0;
+    }
+
+    server {
+        listen 80 default;
+        server_name smyt.ru;
+
+        access_log $PROJECT_ROOT/spool/logs/nginx-access.log;
+        error_log $PROJECT_ROOT/spool/logs/nginx-error.log;
+
+        location /static/ {
+              alias $PROJECT_ROOT/spool/static/;
+        }
+
+        location / {
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header Host $http_host;
+            proxy_redirect off;
+            proxy_pass http://smyt_app_server;
+        }
+
+    }
