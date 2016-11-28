@@ -1,5 +1,55 @@
-Тестовое задание для SMYT
-=========================
+Test task for SMYT company
+==========================
+
+Description
+-----------
+
+Create Web-application, based on Django, by following these requirements:
+
+1) Application should be able to create Django models on-the-fly (in memory) from text model description (in, for example, XML or YAML file); char, int and date types should be supported.
+
+2) Tables in the DB should be created with use of standard Django tools (syncdb); for bringing changes South should be used (if models were created right, then syncdb and south should understand them well);
+
+3) Those tables should be editable through Django admin;
+
+4) Main page of the application should allow to view and edit data, for example:
+
+![logo]
+
+[logo]: http://habrastorage.org/storage2/b00/1c7/cfb/b001c7cfbd1cb0b38ad5633d5a781612.png "Пример"
+
+After click on the cell with data, cell should become editable cell depending on data type (for type "data" we should get date picket widget), and after input and validation should be sent to the server. You should be able to add new row. Language - JavaScript.
+
+5) All created models and queries should be covered with tests.
+
+On the left - list of tables, on the right - data. After table choose, right block should load (via AJAX) structure and data from the table. Main requirement - no html blocks get of those data.
+
+Result of solved task is source code on github + url of deployed application.
+
+Description example (yaml):
+
+
+    users:
+        title: Users
+        fields:
+            - {id: name, title: Name, type: char}     
+            - {id: paycheck, title: Compensation, type: int}
+            - {id: date_joined, title: Date of start, type: date}
+    
+        
+    rooms:
+        title: Rooms
+        fields:
+            - {id: department, title: Department, type: char}     
+            - {id: spots, title: Capacity, type: int}
+
+Documentation (not the part of the task)
+----------------------------------------
+
+Deploy documentation is located in the `docs` directory.
+
+Тестовое задание для SMYT (on Russian)
+======================================
 
 Описание
 --------
