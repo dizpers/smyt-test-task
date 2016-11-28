@@ -1,5 +1,7 @@
-Test task for SMYT company
-==========================
+Please, check English and Russian version of task description below.
+
+Test task for SMYT company (on English)
+=======================================
 
 Description
 -----------
