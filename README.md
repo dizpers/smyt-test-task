@@ -50,6 +50,11 @@ Documentation (not the part of the task)
 
 Deploy documentation is located in the `docs` directory.
 
+TODO
+----
+
+1) process model description with [Trafaret](https://github.com/Deepwalker/trafaret).
+
 Тестовое задание для SMYT (on Russian)
 ======================================
 
@@ -100,3 +105,8 @@ Deploy documentation is located in the `docs` directory.
 ------------
 
 Документация по deploy находится в директории `docs`.
+
+TODO
+----
+
+1) использовать [Trafaret](https://github.com/Deepwalker/trafaret) для обработки описания моделей.
